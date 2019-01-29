@@ -1,0 +1,34 @@
+##Tracky
+- [x] add domain
+    - [x] issue
+    - [x] comments
+    - [x] user
+- [ on hold ] persist to database
+    - [ ] converters from/to domain
+    - [x] h2 database
+    - [ on hold ] entities & repository
+- [busy] expose via rest controller
+    - [ ] link to repository and mapper
+- [bussy] add docker-compose    
+- [x] add beans.xml -> not needed anymore with JavaEE
+- [x] add WEB-INF / META-INF
+- [ ] add security
+- [x] add cucumber dependencies
+- [ ] add test database
+- [ ] use cucumber to test api
+- [ ] add exceptions handling
+- [ ] add proper logging
+- [ ] add metrics collection
+- [ ] add performance testing
+- [ ] use flyway to migrate
+- [ ] use redis to store the users
+- [ ] use mongoDB to store the users
+- [ ] add jsp to say hello
+- [ ] add Jsp with CRUD
+- [ ] add dynamic SPA
+- [ ] add Angular Frontend
+- [ ] add React Frontend
+- [ ] add message broker usage with events
+- [ ] Refactor domain to work events based
+- [ ] Store events
+- [ ] implements CQRS
