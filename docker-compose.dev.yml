@@ -1,0 +1,29 @@
+version: '2'
+services:
+  flyway:
+    command: -url=jdbc:postgresql://postgres:5432/tracky -schemas=tracky -user=tracky -password=password -connectRetries=60 migrate info
+    volumes:
+      - ../db/migration:/flyway/sql
+    environment:
+      - POSTGRES_USER=tracky
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=tracky
+      - POSTGRES_HOST=postgres
+  app:
+    volumes:
+      - ../target/:/opt/jboss/wildfly/standalone/deployments/
+    environment:
+      - POSTGRES_USER=tracky
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=tracky
+      - POSTGRES_HOST=postgres
+  postgres:
+    environment:
+      - POSTGRES_USER=tracky
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=tracky
+    ports:
+      - "5432:5432"
+  pgadminer:
+    ports:
+      - "99:80"

@@ -1,5 +1,9 @@
 package be.rbe.tracky.infrastructure.rest.dtos;
 
+import java.util.List;
+
 public class NewIssueDTO {
-    //todo to be implemented
+    public String name;
+    public String severity;
+    public List<CommentDTO> comments;
 }

@@ -1,26 +1,23 @@
 ##Tracky
-- [x] add domain
-    - [x] issue
-    - [x] comments
-    - [x] user
-- [ on hold ] persist to database
-    - [ ] converters from/to domain
-    - [x] h2 database
-    - [ on hold ] entities & repository
-- [busy] expose via rest controller
+###Doing
+- [ ONGOING ] use cucumber to test api
+- [ ] add docker-compose    
+    - [x] add flyway container
+    - [x] add PgQSL container
+    - [x] add test database PgQSL
+    - [x] use flyway to migrate
+    - [x] add wildfly container
+    - [ ] add datasource to wildfly container
+    - [ ] deploy app to wildfly container
+    - [ ] http 200 from Cucumber test ###OUAHHHHHH###
+###Next
+- [ ] expose via rest controller
     - [ ] link to repository and mapper
-- [bussy] add docker-compose    
-- [x] add beans.xml -> not needed anymore with JavaEE
-- [x] add WEB-INF / META-INF
-- [ ] add security
-- [x] add cucumber dependencies
-- [ ] add test database
-- [ ] use cucumber to test api
-- [ ] add exceptions handling
-- [ ] add proper logging
+    - [ ] add exceptions handling
+    - [ ] add security
+    - [ ] add proper logging
 - [ ] add metrics collection
 - [ ] add performance testing
-- [ ] use flyway to migrate
 - [ ] use redis to store the users
 - [ ] use mongoDB to store the users
 - [ ] add jsp to say hello
@@ -32,3 +29,17 @@
 - [ ] Refactor domain to work events based
 - [ ] Store events
 - [ ] implements CQRS
+##Done
+ - [x] persist to database
+    - [x] converters from/to domain
+    - [x] h2 database
+    - [x] entities & repository
+    - [x] set ID
+- [x] add domain
+    - [x] issue
+    - [x] comments
+    - [x] user
+- [x] add beans.xml -> not needed anymore with JavaEE
+- [x] add WEB-INF / META-INF
+- [x] add cucumber dependencies
+

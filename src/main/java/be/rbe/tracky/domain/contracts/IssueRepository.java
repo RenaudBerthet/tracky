@@ -11,8 +11,6 @@ public interface IssueRepository {
 
     void addComment(UUID issueID, Comment comment);
 
-    void update(Issue issue);
-
-    void find(UUID issueID);
+    void update(UUID uuid, Issue issue);
 
 }

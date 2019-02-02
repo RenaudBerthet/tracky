@@ -1,9 +1,11 @@
 package be.rbe.tracky.infrastructure.rest;
 
+import be.rbe.tracky.infrastructure.repository.IssueRepositoryJPA;
 import be.rbe.tracky.infrastructure.rest.dtos.CommentDTO;
 import be.rbe.tracky.infrastructure.rest.dtos.NewIssueDTO;
 import be.rbe.tracky.infrastructure.rest.dtos.UpdateIssueDTO;
 
+import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -14,9 +16,16 @@ import java.util.UUID;
 @Produces(MediaType.APPLICATION_JSON)
 public class IssueRestController {
 
+    IssueRepositoryJPA issueRepositoryJPA;
+
+    @Inject
+    public IssueRestController(IssueRepositoryJPA issueRepositoryJPA) {
+        this.issueRepositoryJPA = issueRepositoryJPA;
+    }
+
     @POST
     public Response createIssue(NewIssueDTO newIssueDTO) {
-        //todo Implement method
+
         return Response.ok().build();
     }
 

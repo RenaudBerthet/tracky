@@ -1,5 +1,7 @@
 package be.rbe.tracky.infrastructure.rest.dtos;
 
 public class CommentDTO {
-    //todo
+    public String message;
+    public String postedby;
+    public String postedon;
 }
