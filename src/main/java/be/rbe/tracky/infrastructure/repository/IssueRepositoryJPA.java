@@ -12,7 +12,6 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityNotFoundException;
-import javax.persistence.PersistenceUnit;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -20,7 +19,6 @@ import java.util.stream.Collectors;
 @Stateless
 public class IssueRepositoryJPA implements IssueRepository {
 
-    @PersistenceUnit(name = "issuesDB")
     private EntityManager entityManager;
     private IssueEntityMapper issueEntityMapper;
     private CommentEntityMapper commentEntityMapper;

@@ -6,10 +6,12 @@ import be.rbe.tracky.domain.contracts.EntityMapper;
 import be.rbe.tracky.infrastructure.repository.entities.CommentEntity;
 import be.rbe.tracky.infrastructure.repository.entities.IssueEntity;
 
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Stateless
 public class IssueEntityMapper implements EntityMapper<Issue, IssueEntity> {
 
     @Inject

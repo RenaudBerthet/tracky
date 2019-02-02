@@ -11,7 +11,7 @@ services:
       - POSTGRES_HOST=postgres
   app:
     volumes:
-      - ../target/:/opt/jboss/wildfly/standalone/deployments/
+      - ./target/:/opt/jboss/wildfly/standalone/deployments/
     environment:
       - POSTGRES_USER=tracky
       - POSTGRES_PASSWORD=password

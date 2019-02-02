@@ -27,8 +27,8 @@ services:
   app:
     image: jboss/wildfly:latest
     build:
-      context: .
-      dockerfile: ./docker/app/Dockerfile
+      context: ./docker/app/
+      dockerfile: Dockerfile
     environment:
       - POSTGRES_PASSWORD
       - POSTGRES_USER

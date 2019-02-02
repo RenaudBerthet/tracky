@@ -8,7 +8,7 @@
     - [x] use flyway to migrate
     - [x] add wildfly container
     - [ ] add datasource to wildfly container
-    - [ ] deploy app to wildfly container
+    - [x] deploy app to wildfly container
     - [ ] http 200 from Cucumber test ###OUAHHHHHH###
 ###Next
 - [ ] expose via rest controller

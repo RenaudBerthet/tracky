@@ -1,6 +1,6 @@
 FROM jboss/wildfly
 
-COPY ["datasource" ,"/opt/jboss/wildfly/customization/datasource"]
+COPY --chown=jboss:jboss ["datasource" ,"/opt/jboss/wildfly/customization/"]
 
 RUN ["chown", "-R" ,"jboss:jboss","/opt/jboss/wildfly/customization/"]
 RUN ["chmod","-R", "+x", "/opt/jboss/wildfly/customization/"]
