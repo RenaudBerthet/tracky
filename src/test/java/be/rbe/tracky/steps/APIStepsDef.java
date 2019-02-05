@@ -17,10 +17,10 @@ import javax.ws.rs.core.Response;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Stepdefs {
+public class APIStepsDef {
 
-    public static final String URI = "http://localhost:8082/spring-jersey";
-    private static final String ISSUE_RESOURCE_PATH = "issue";
+    public static final String HOST_URL = "http://0.0.0.0:8080";
+    private static final String ISSUE_RESOURCE_PATH = "/tracky/resources/Issue/";
     private Response response;
 
     @Given("The system don't know about any issue")
@@ -36,7 +36,7 @@ public class Stepdefs {
 
     private Response submitIssueDTO(IssueDTO issueSubmitted) {
         Client client = ClientBuilder.newClient();
-        WebTarget webTarget = client.target(URI).path(ISSUE_RESOURCE_PATH);
+        WebTarget webTarget = client.target(HOST_URL).path(ISSUE_RESOURCE_PATH);
         Invocation.Builder invocationBuilder = webTarget.request(MediaType.APPLICATION_JSON);
         return invocationBuilder.post(Entity.entity(issueSubmitted, MediaType.APPLICATION_JSON));
     }

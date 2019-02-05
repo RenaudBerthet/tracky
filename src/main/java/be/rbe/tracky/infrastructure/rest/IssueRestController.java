@@ -1,10 +1,11 @@
 package be.rbe.tracky.infrastructure.rest;
 
-import be.rbe.tracky.domain.contracts.IssueRepository;
+import be.rbe.tracky.infrastructure.repository.IssueRepositoryJPA;
 import be.rbe.tracky.infrastructure.rest.dtos.CommentDTO;
 import be.rbe.tracky.infrastructure.rest.dtos.NewIssueDTO;
 import be.rbe.tracky.infrastructure.rest.dtos.UpdateIssueDTO;
 
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -14,18 +15,22 @@ import java.util.UUID;
 @Path("Issue")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
+@Stateless
 public class IssueRestController {
 
-    IssueRepository issueRepository;
+    IssueRepositoryJPA issueRepository;
+
+    public IssueRestController() {
+    }
 
     @Inject
-    public IssueRestController(IssueRepository issueRepository) {
+    public IssueRestController(IssueRepositoryJPA issueRepository) {
         this.issueRepository = issueRepository;
     }
 
     @POST
     public Response createIssue(NewIssueDTO newIssueDTO) {
-
+        //todo Implement method
         return Response.ok().build();
     }
 

@@ -2,7 +2,6 @@ package be.rbe.tracky.infrastructure.repository;
 
 import be.rbe.tracky.domain.Comment;
 import be.rbe.tracky.domain.Issue;
-import be.rbe.tracky.domain.contracts.IssueRepository;
 import be.rbe.tracky.infrastructure.repository.entities.CommentEntity;
 import be.rbe.tracky.infrastructure.repository.entities.IssueEntity;
 import be.rbe.tracky.infrastructure.repository.mappers.CommentEntityMapper;
@@ -17,12 +16,14 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Stateless
-public class IssueRepositoryJPA implements IssueRepository {
+public class IssueRepositoryJPA {
 
     private EntityManager entityManager;
     private IssueEntityMapper issueEntityMapper;
     private CommentEntityMapper commentEntityMapper;
 
+    public IssueRepositoryJPA() {
+    }
 
     @Inject
     public IssueRepositoryJPA(EntityManager entityManager, IssueEntityMapper issueEntityMapper, CommentEntityMapper commentEntityMapper) {
@@ -31,13 +32,11 @@ public class IssueRepositoryJPA implements IssueRepository {
         this.commentEntityMapper = commentEntityMapper;
     }
 
-    @Override
     public void save(Issue issue) {
         IssueEntity issueEntity = issueEntityMapper.toEntity(issue);
         entityManager.persist(issueEntity);
     }
 
-    @Override
     public void addComment(UUID issueID, Comment comment) {
         CommentEntity commentEntity = commentEntityMapper.toEntity(comment);
         IssueEntity issueEntity = entityManager.find(IssueEntity.class, issueID);
@@ -47,7 +46,6 @@ public class IssueRepositoryJPA implements IssueRepository {
         issueEntity.addComment(commentEntity);
     }
 
-    @Override
     public void update(UUID issueID, Issue updatedIssue) {
         IssueEntity issueEntity = entityManager.find(IssueEntity.class, issueID);
         if (issueEntity == null) {
