@@ -1,29 +1,6 @@
 version: "2"
 
 services:
-
-  pgadminer:
-    image: clue/adminer:latest
-    depends_on:
-      - postgres
-    links:
-      - postgres
-    ports:
-      - "99:80"
-  flyway:
-    image: boxfuse/flyway:latest
-    command: -url=jdbc:postgresql://postgres:5432/tracky -schemas=tracky -user=tracky -password=password -connectRetries=60 migrate info
-    volumes:
-      - ./db/migration:/flyway/sql
-    environment:
-      - POSTGRES_USER=tracky
-      - POSTGRES_PASSWORD=password
-      - POSTGRES_DB=tracky
-      - POSTGRES_HOST=postgres
-    depends_on:
-      - postgres
-    links:
-      - postgres
   app:
     image: jboss/wildfly:latest
     volumes:
@@ -34,18 +11,5 @@ services:
       - POSTGRES_DB=tracky
       - POSTGRES_HOST=postgres
       - DEBUG=true
-    depends_on:
-      - postgres
-    links:
-      - postgres
     ports:
       - "8080:8080"
-  postgres:
-    image: postgres:11.1-alpine
-    environment:
-      - POSTGRES_USER=tracky
-      - POSTGRES_PASSWORD=password
-      - POSTGRES_DB=tracky
-      - POSTGRES_HOST=postgres
-    ports:
-      - "5432:5432"
