@@ -1,7 +1,7 @@
 package be.rbe.tracky.infrastructure.rest;
 
 import be.rbe.tracky.infrastructure.repository.IssueRepository;
-import be.rbe.tracky.infrastructure.repository.IssueRepositoryJPA;
+import be.rbe.tracky.infrastructure.repository.IssueRepositoryInMemory;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -19,7 +19,7 @@ public class IssueRestController {
     IssueRepository issueRepository;
 
     @Inject
-    public IssueRestController(IssueRepositoryJPA issueRepository) {
+    public IssueRestController(IssueRepositoryInMemory issueRepository) {
         this.issueRepository = issueRepository;
     }
 
