@@ -1,18 +1,20 @@
 package be.rbe.tracky.domain;
 
-import java.util.ArrayList;
-import java.util.List;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Id;
 import java.util.Objects;
 
 public class Issue {
+    @Id
+    private Long id;
     private String title;
+    @Enumerated(EnumType.STRING)
     private Severity severity;
-    private List<Comment> comments;
 
-    public Issue(String title, Severity severity, List<Comment> comments) {
+    public Issue(String title, Severity severity) {
         this.title = title;
         this.severity = severity;
-        this.comments = new ArrayList<>();
     }
 
     public String getTitle() {
@@ -23,13 +25,6 @@ public class Issue {
         return severity;
     }
 
-    public List<Comment> getComments() {
-        return comments;
-    }
-
-    public void addComment(Comment comment) {
-        this.comments.add(comment);
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -37,13 +32,12 @@ public class Issue {
         if (o == null || getClass() != o.getClass()) return false;
         Issue issue = (Issue) o;
         return Objects.equals(title, issue.title) &&
-                severity == issue.severity &&
-                Objects.equals(comments, issue.comments);
+                severity == issue.severity;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(title, severity, comments);
+        return Objects.hash(title, severity);
     }
 
     @Override

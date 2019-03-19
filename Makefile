@@ -1,14 +1,17 @@
-build-dev:
-	docker-compose -f docker-compose.dev.yml build --no-cache
-start-dev:
-	docker-compose -f docker-compose.dev.yml up
-stop-dev:
-	docker-compose -f docker-compose.dev.yml down
-restart-dev:
-	mvn clean install
-	docker-compose -f docker-compose.dev.yml down
-	docker-compose -f docker-compose.dev.yml build --no-cache
-	docker-compose -f docker-compose.dev.yml up
-deploy-war:
-	mvn clean install
-
+start-minikube:
+	minikube start
+	eval $(minikube docker-env)
+build:
+	mvn clean package
+	eval $(minikube docker-env)
+	docker build . -t tracky-node:dev
+test:
+	mvn verify
+deploy:
+	mvn flyway:clean
+	mvn flyway:migrate
+	eval $(minikube docker-env)
+	kubectl apply -f ./k8s
+monitor:
+	eval $(minikube docker-env)
+	kubectl get deployments

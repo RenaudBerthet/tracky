@@ -21,18 +21,7 @@
             <artifactId>javaee-api</artifactId>
             <version>7.0</version>
         </dependency>
-        <dependency>
-            <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-java</artifactId>
-            <version>4.2.2</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-junit</artifactId>
-            <version>4.2.2</version>
-            <scope>test</scope>
-        </dependency>
+
         <dependency>
             <groupId>org.glassfish.jersey.core</groupId>
             <artifactId>jersey-client</artifactId>
@@ -80,7 +69,6 @@
                 <version>2.6</version>
                 <configuration>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
-                    <outputDirectory>${basedir}/docker/app/deployments</outputDirectory>
                 </configuration>
             </plugin>
             <plugin>

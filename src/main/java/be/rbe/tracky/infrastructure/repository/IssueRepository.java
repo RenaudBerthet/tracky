@@ -1,14 +1,18 @@
 package be.rbe.tracky.infrastructure.repository;
 
-import java.util.UUID;
+import be.rbe.tracky.domain.Issue;
+
+import java.util.List;
 
 public interface IssueRepository {
 
-    void save(UUID uuid, String issue);
+    void save(Issue issue);
 
-    void update(UUID uuid, String issue);
+    void update(Issue issue);
 
-    void delete(UUID uuid);
+    void delete(String issueID);
 
-    String retrieve(UUID uuid);
+    Issue retrieve(String issueID);
+
+    List<Issue> all();
 }

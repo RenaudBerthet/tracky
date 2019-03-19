@@ -1,39 +1,45 @@
 package be.rbe.tracky.infrastructure.repository;
 
+import be.rbe.tracky.domain.Issue;
+
 import javax.annotation.PreDestroy;
 import javax.ejb.Singleton;
-import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 
 @Singleton
 public class IssueRepositoryInMemory implements IssueRepository {
 
-
-    private Map<UUID, String> issues;
+    private Map<String, String> issues;
 
     public IssueRepositoryInMemory() {
-        this.issues = new HashMap<>();
+        this.issues = new ConcurrentHashMap<>();
     }
 
     @Override
-    public void save(UUID uuid, String issue) {
-        issues.put(uuid, issue);
+    public void save(Issue issue) {
+
     }
 
     @Override
-    public String retrieve(UUID uuid) {
-        return issues.get(uuid);
+    public void update(Issue issue) {
+
     }
 
     @Override
-    public void update(UUID uuid, String issue) {
-        issues.put(uuid, issue);
-    }
-
-    @Override
-    public void delete(UUID uuid) {
+    public void delete(String uuid) {
         issues.remove(uuid);
+    }
+
+    @Override
+    public Issue retrieve(String issueID) {
+        return null;
+    }
+
+    @Override
+    public List<Issue> all() {
+        return null;
     }
 
     @PreDestroy
