@@ -4,14 +4,14 @@
 
 Tracky is an Issue Tracker application providing a REST API. This Application is one of my pet projects where I'm experimenting with Kubernetes, Java EE and Cucumber.
  
-
 ###Lifecycle
 
-To start minikube
+To manage minikube
 ```bash
 make start-minikube
+make stop-minikube
 ```
-To build the app
+To build and deploy the app
 ```bash
 make build
 ```
@@ -19,9 +19,11 @@ To run the test suite
 ```bash
 make test
 ```
-To deploy tracky to the minikube cluster
+To interact with the database
 ```bash
-make deploy
+make start-db
+make stop-db
+make migrate-db
 ```
 
 
@@ -33,15 +35,19 @@ Use the following information to connect to the tracky database
  - System: PostgreSQL
  - host: postgres:5432/tracky
  - user: tracky
- - password: password
+ - password: tracky
  - schema: tracky
 
 ###Stories
 ####Focus
 - [ ] Database Container
-    - [ ] flyway migration
+    - [x] create a docker container
+    - [x] flyway migration
+    - [x] use openliberty as application server technology
+        - [ ] display hello world from app
     - [ ] configure datasource on middleware
     - [ ] configure datasource with env variable
+    - [ ] add PGADMIN container to manage data
 ####Backlog
 - [ ] JPA
     - [ ] add Issue

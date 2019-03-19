@@ -13,6 +13,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>
@@ -58,7 +59,6 @@
             <version>5.2.0</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
     <build>
         <finalName>tracky</finalName>
@@ -69,6 +69,7 @@
                 <version>2.6</version>
                 <configuration>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
+                    <outputDirectory>./k8s/</outputDirectory>
                 </configuration>
             </plugin>
             <plugin>
@@ -81,4 +82,42 @@
             </plugin>
         </plugins>
     </build>
+    <profiles>
+        <profile>
+            <id>flyway-local</id>
+            <properties>
+                <database.name>tracky</database.name>
+                <database.driver>org.postgresql.Driver</database.driver>
+                <database.url>jdbc:postgresql://localhost:5432/tracky</database.url>
+                <database.username>tracky</database.username>
+                <database.password>tracky</database.password>
+                <database.schema>tracky</database.schema>
+            </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.flywaydb</groupId>
+                        <artifactId>flyway-maven-plugin</artifactId>
+                        <version>5.2.1</version>
+                        <configuration>
+                            <url>${database.url}</url>
+                            <user>${database.username}</user>
+                            <password>${database.password}</password>
+                            <driver>${database.driver}</driver>
+                            <schemas>
+                                <schema>${database.schema}</schema>
+                            </schemas>
+                        </configuration>
+                        <dependencies>
+                            <dependency>
+                                <groupId>postgresql</groupId>
+                                <artifactId>postgresql</artifactId>
+                                <version>9.1-901-1.jdbc4</version>
+                            </dependency>
+                        </dependencies>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
